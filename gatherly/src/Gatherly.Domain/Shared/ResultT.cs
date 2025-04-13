@@ -1,6 +1,4 @@
-﻿using System.Dynamic;
-
-namespace Gatherly.Domain.Shared;
+﻿namespace Gatherly.Domain.Shared;
 
 public class Result<TValue> : Result
 {

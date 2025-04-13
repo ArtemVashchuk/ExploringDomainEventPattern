@@ -1,4 +1,4 @@
-﻿namespace Gatherly.Domain.Premitives;
+﻿namespace Gatherly.Domain.Primitives;
 
 public abstract class ValueObject : IEquatable<ValueObject>
 {

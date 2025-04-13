@@ -1,6 +1,4 @@
-﻿using Gatherly.Domain.Premitives;
-
-namespace Gatherly.Domain.Entities;
+﻿namespace Gatherly.Domain.Entities;
 
 public class Attendee
 {

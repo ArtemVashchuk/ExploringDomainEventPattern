@@ -1,18 +1,14 @@
-﻿using Gatherly.Application.Abstractions;
-using Gatherly.Domain.Entities;
-using Gatherly.Domain.Enums;
+﻿using Gatherly.Domain.Enums;
 using Gatherly.Domain.Repositories;
 using MediatR;
 
 namespace Gatherly.Application.Invitations.Commands.AcceptInvitation;
 
 internal sealed class AcceptInvitationCommandHandler(
-    IInvitationRepository invitationRepository,
     IMemberRepository memberRepository,
     IGatheringRepository gatheringRepository,
     IAttendeeRepository attendeeRepository,
-    IUnitOfWork unitOfWork,
-    IEmailService emailService)
+    IUnitOfWork unitOfWork)
     : IRequestHandler<AcceptInvitationCommand>
 {
     public async Task<Unit> Handle(AcceptInvitationCommand request, CancellationToken cancellationToken)
@@ -42,12 +38,6 @@ internal sealed class AcceptInvitationCommandHandler(
         }
 
         await unitOfWork.SaveChangesAsync(cancellationToken);
-
-        // Send email
-        if (invitation.Status == InvitationStatus.Accepted)
-        {
-            await emailService.SendInvitationAcceptedEmailAsync(gathering, cancellationToken);
-        }
 
         return Unit.Value;
     }

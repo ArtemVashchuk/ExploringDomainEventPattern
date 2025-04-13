@@ -1,4 +1,4 @@
-﻿using Gatherly.Domain.Premitives;
+﻿using Gatherly.Domain.Primitives;
 using Gatherly.Domain.ValueObjects;
 
 namespace Gatherly.Domain.Entities;

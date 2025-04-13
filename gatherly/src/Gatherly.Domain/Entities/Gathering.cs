@@ -1,12 +1,13 @@
-﻿using Gatherly.Domain.Enums;
+﻿using Gatherly.Domain.DomainEvents;
+using Gatherly.Domain.Enums;
 using Gatherly.Domain.Errors;
 using Gatherly.Domain.Exceptions;
-using Gatherly.Domain.Premitives;
+using Gatherly.Domain.Primitives;
 using Gatherly.Domain.Shared;
 
 namespace Gatherly.Domain.Entities;
 
-public sealed class Gathering : Entity
+public sealed class Gathering : AggregateRoot
 {
     private readonly List<Invitation> _invitations = new();
     private readonly List<Attendee> _attendees = new();
@@ -127,6 +128,8 @@ public sealed class Gathering : Entity
         }
 
         var attendee = invitation.Accept();
+        
+        RaiseDomainEvent(new InvitationAcceptedDomainEvent(invitation.Id, Id));
 
         _attendees.Add(attendee);
         NumberOfAttendees++;

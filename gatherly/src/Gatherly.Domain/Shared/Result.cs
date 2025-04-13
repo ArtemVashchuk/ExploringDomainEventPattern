@@ -1,6 +1,4 @@
-﻿using System.Runtime.InteropServices.JavaScript;
-
-namespace Gatherly.Domain.Shared;
+﻿namespace Gatherly.Domain.Shared;
 
 public class Result
 {

@@ -1,5 +1,5 @@
 ﻿using Gatherly.Domain.Enums;
-using Gatherly.Domain.Premitives;
+using Gatherly.Domain.Primitives;
 
 namespace Gatherly.Domain.Entities;
 
